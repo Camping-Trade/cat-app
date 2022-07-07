@@ -1,10 +1,3 @@
-//
-//  Persistence.swift
-//  CaT
-//
-//  Created by 노윤주 on 2022/07/05.
-//
-
 import CoreData
 
 struct PersistenceController {

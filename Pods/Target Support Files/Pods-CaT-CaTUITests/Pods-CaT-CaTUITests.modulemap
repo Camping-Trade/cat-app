@@ -1,0 +1,6 @@
+framework module Pods_CaT_CaTUITests {
+  umbrella header "Pods-CaT-CaTUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

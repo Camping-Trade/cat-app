@@ -13,7 +13,7 @@ struct CaTApp: App {
         
         /*UserApi.shared.me { User, Error in
             if let name = User?.kakaoAccount?.profile?.nickname{
-                userName = name //let 사용 안 하는건가...
+                userName = name //let 사용 안 하는건가....
                 //print(userName)
             }
             if let mail = User?.kakaoAccount?.email{

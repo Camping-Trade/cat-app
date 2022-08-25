@@ -96,7 +96,7 @@ public class LoginSuccess extends AppCompatActivity {
 
     private void SettingListener() {
         bottomNavigationView.setOnItemSelectedListener(new TabSelectedListener());
-    }
+    } 
 
     class TabSelectedListener implements BottomNavigationView.OnItemSelectedListener {
 

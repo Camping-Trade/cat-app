@@ -1,4 +1,4 @@
-package com.catsruletheworld.cat;
+package com.catsruletheworld.cat.login;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package com.catsruletheworld.cat;
+package com.catsruletheworld.cat.listview;
 
 import android.graphics.drawable.Drawable;
 

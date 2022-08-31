@@ -1,4 +1,4 @@
-package com.catsruletheworld.cat;
+package com.catsruletheworld.cat.login;
 
 import android.app.Application;
 import com.kakao.sdk.common.KakaoSdk;

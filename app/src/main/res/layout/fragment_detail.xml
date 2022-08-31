@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/postImage"
         android:layout_width="374dp"
         android:layout_height="270dp"
         android:layout_marginTop="96dp"
@@ -17,7 +17,7 @@
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/postTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -25,15 +25,15 @@
         android:text="제목"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/postImage" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/postDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="28dp"
         android:text="설명"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/postTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

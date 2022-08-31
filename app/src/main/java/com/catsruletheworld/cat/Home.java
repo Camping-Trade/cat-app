@@ -1,5 +1,6 @@
 package com.catsruletheworld.cat;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -10,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.catsruletheworld.cat.listview.ListViewAdapter;
+import com.catsruletheworld.cat.listview.ListViewItem;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Home extends Fragment {
 
@@ -21,6 +24,16 @@ public class Home extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);
 
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent floatIntent = new Intent(getActivity(), NewPost.class);
+                floatIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(floatIntent);
+            }
+        });
+
         ListViewAdapter listViewAdapter = new ListViewAdapter();
         //ListViewAdapter listViewAdapter = new ListViewAdapter(getActivity(), android.R.layout.listview_item, LIST_MENU);
 
@@ -28,8 +41,11 @@ public class Home extends Fragment {
         listView.setAdapter(listViewAdapter);
 
         // 아이템 추가
-        listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_background), "Title1", "Description1");
+        listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title1", "Description1");
         listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title2", "Description2");
+        listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title3", "Description3");
+        listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title4", "Description4");
+        listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title5", "Description5");
 
         // 리스트뷰 클릭 이벤트
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -42,7 +58,8 @@ public class Home extends Fragment {
                 Drawable imgDrawable = listViewItem.getImgDrawable();
 
                 // 가져온 데이터 사용하기
-
+                //Intent listIntent = new Intent(getActivity(), )
+                //https://m.blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=since201109&logNo=221314321996
             }
         });
 

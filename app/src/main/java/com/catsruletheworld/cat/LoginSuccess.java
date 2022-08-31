@@ -23,7 +23,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class LoginSuccess extends AppCompatActivity {
@@ -43,7 +42,9 @@ public class LoginSuccess extends AppCompatActivity {
         init(); //객체 정의
         SettingListener(); //세팅 리스너
 
-        bottomNavigationView.setSelectedItemId(R.id.home); //첫 시작 탭
+        //첫 시작 탭
+        getSupportFragmentManager().beginTransaction().replace(R.id.home_body, new Home()).commit();
+        //bottomNavigationView.setSelectedItemId(R.id.home);
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -96,7 +97,7 @@ public class LoginSuccess extends AppCompatActivity {
 
     private void SettingListener() {
         bottomNavigationView.setOnItemSelectedListener(new TabSelectedListener());
-    } 
+    }
 
     class TabSelectedListener implements BottomNavigationView.OnItemSelectedListener {
 

@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -32,6 +34,10 @@ public class NewPost extends AppCompatActivity implements View.OnClickListener{
     private ImageView userImage;
     private String absolutePath;
 
+    Button submit_button;
+    EditText new_title;
+    EditText new_desc;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +47,34 @@ public class NewPost extends AppCompatActivity implements View.OnClickListener{
         Button uploadButton = (Button) this.findViewById(R.id.upload_button);
 
         uploadButton.setOnClickListener(this);
+
+        submit_button = findViewById(R.id.submit_button);
+        new_title = findViewById(R.id.new_title);
+        new_desc = findViewById(R.id.new_desc);
+
+        submit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+
+                Bundle bundle = new Bundle();
+
+                String title = new_title.getText().toString();
+                String desc = new_desc.getText().toString();
+
+                bundle.putString("title", title);
+                bundle.putString("desc", desc);
+
+                Detail detail = new Detail();
+                Home home = new Home();
+
+                detail.setArguments(bundle);
+                home.setArguments(bundle);
+
+                transaction.replace(R.id.home_body, home).commit();
+            }
+        });
     }
 
     public void fromPhoto() {

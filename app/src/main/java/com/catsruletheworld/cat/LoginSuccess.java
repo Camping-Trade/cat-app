@@ -67,11 +67,11 @@ public class LoginSuccess extends AppCompatActivity {
         double wifi_lat = wifiLocation.getLatitude();
         double wifi_lon = wifiLocation.getLongitude();
 
-        Log.d(String.valueOf(gps_lat), "gps current latitude");
-        Log.d(String.valueOf(gps_lon), "gps current longitude");
+        Log.d(TAG, "gps current latitude: " + String.valueOf(gps_lat));
+        Log.d(TAG, "gps current longitude: " + String.valueOf(gps_lon));
 
-        Log.d(String.valueOf(wifi_lat), "wifi current latitude");
-        Log.d(String.valueOf(wifi_lon), "wifi current longitude");
+        Log.d(TAG, "wifi current latitude: " + String.valueOf(wifi_lat));
+        Log.d(TAG, "wifi current longitude: " + String.valueOf(wifi_lon));
 
         campground = (TextView) findViewById(R.id.location);
 

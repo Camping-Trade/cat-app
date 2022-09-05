@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.kakao.sdk.user.UserApi;
 import com.kakao.sdk.user.UserApiClient;
@@ -16,21 +17,13 @@ import com.kakao.sdk.user.model.Account;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG="사용자";
     private ImageButton btn_login;
+    Account user_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-
-        Button transition = (Button) findViewById(R.id.transition);
-        transition.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginSuccess.class);
-                startActivity(intent);
-            }
-        }));
 
         btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener(){
@@ -42,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
                             Log.e(TAG, "로그인 실패", error);
                         } else if (oAuthToken != null) {
                             Log.i(TAG, "로그인 성공(토큰) : " + oAuthToken.getAccessToken());
-                            Intent login_intent = new Intent(MainActivity.this, LoginSuccess.class);
-                            startActivity(login_intent);
 
                             UserApiClient.getInstance().me((user, meError) -> {
                                 if (meError != null) {
@@ -52,12 +43,16 @@ public class MainActivity extends AppCompatActivity {
                                     System.out.println("로그인 완료");
                                     Log.i(TAG, user.toString());
                                     {
-                                        Log.i(TAG, "사용자 정보 요청 성공" +
-                                                "\n회원번호: "+user.getId() +
-                                                "\n이메일: "+user.getKakaoAccount().getEmail());
+                                        Log.i(TAG, "사용자 정보 요청 성공"+
+                                                "\n회원번호: "+user.getId()+
+                                                "\n이메일: "+user.getKakaoAccount().getEmail()+
+                                                "\n이름: "+user.getKakaoAccount().getProfile().getNickname()+
+                                                "\n사진: "+user.getKakaoAccount().getProfile().getProfileImageUrl());
                                     }
-                                    Account user1 = user.getKakaoAccount();
-                                    System.out.println("사용자 계정" + user1);
+                                    user_info = user.getKakaoAccount();
+
+                                    Intent login_intent = new Intent(getApplicationContext(), LoginSuccess.class);
+                                    startActivity(login_intent);
                                 }
                                 return null;
                             });
@@ -82,8 +77,10 @@ public class MainActivity extends AppCompatActivity {
                                                 "\n회원번호: "+user.getId() +
                                                 "\n이메일: "+user.getKakaoAccount().getEmail());
                                     }
-                                    Account user1 = user.getKakaoAccount();
-                                    System.out.println("사용자 계정" + user1);
+                                    user_info = user.getKakaoAccount();
+
+                                    Intent login_intent = new Intent(getApplicationContext(), LoginSuccess.class);
+                                    startActivity(login_intent);
                                 }
                                 return null;
                             });
@@ -94,13 +91,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 사용자 정보
+        /*
         UserApiClient.getInstance().me((user, meError) -> {
             if (meError != null) {
                 Log.e(TAG, "사용자 정보 요청 실패", meError);
             } else if (user != null){
                 Log.i(TAG, user.toString());
                 {
+
                     Log.i(TAG, "사용자 정보 요청 성공" +
                             "\n회원번호: " + user.getId() +
                             "\n이메일: " + user.getKakaoAccount().getEmail() +
@@ -111,5 +109,6 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         });
+         */
     }
 }

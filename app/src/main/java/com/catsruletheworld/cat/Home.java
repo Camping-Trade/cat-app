@@ -1,5 +1,6 @@
 package com.catsruletheworld.cat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -18,6 +19,9 @@ import com.catsruletheworld.cat.listview.ListViewItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Home extends Fragment {
+    public static Context context_home;
+    public int new_user_title;
+    public int new_user_desc;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,10 +46,6 @@ public class Home extends Fragment {
 
         // 아이템 추가
         listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title1", "Description1");
-        listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title2", "Description2");
-        listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title3", "Description3");
-        listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title4", "Description4");
-        listViewAdapter.addItem(ContextCompat.getDrawable(getActivity(), R.drawable.ic_launcher_foreground), "Title5", "Description5");
 
         // 리스트뷰 클릭 이벤트
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
